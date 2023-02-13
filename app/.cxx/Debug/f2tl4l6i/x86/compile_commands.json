@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/Users/tanyubo/Desktop/hello-gl2/app/.cxx/Debug/f2tl4l6i/x86",
+  "command": "/Users/tanyubo/Library/Android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=i686-none-linux-android19 --sysroot=/Users/tanyubo/Library/Android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -Dgl2jni_EXPORTS -I/Users/tanyubo/Desktop/hello-gl2/app/src/main/cpp/./include -I/Users/tanyubo/Desktop/hello-gl2/app/src/main/cpp/./include/glm -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -std=c++17 -Wall -fno-limit-debug-info  -fPIC -o CMakeFiles/gl2jni.dir/gl_code.cpp.o -c /Users/tanyubo/Desktop/hello-gl2/app/src/main/cpp/gl_code.cpp",
+  "file": "/Users/tanyubo/Desktop/hello-gl2/app/src/main/cpp/gl_code.cpp"
+}
+]
