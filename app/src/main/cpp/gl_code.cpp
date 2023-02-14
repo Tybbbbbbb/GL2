@@ -33,17 +33,18 @@
 #define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)
 
 
-
 static void printGLString(const char* name, GLenum s) {
   const char* v = (const char*)glGetString(s);
   LOGI("GL %s = %s\n", name, v);
 }
+
 
 static void checkGlError(const char* op) {
   for (GLint error = glGetError(); error; error = glGetError()) {
     LOGI("after %s() glError (0x%x)\n", op, error);
   }
 }
+
 
 auto gVertexShader =
         "#version 300 es\n"
@@ -67,6 +68,9 @@ auto gFragmentShader =
         "{\n"
         "   FragColor = texture(ourTexture, TexCoord);\n"
         "}\n\0";
+
+
+unsigned int texture;
 
 
 GLuint loadShader(GLenum shaderType, const char* pSource) {
@@ -93,6 +97,7 @@ GLuint loadShader(GLenum shaderType, const char* pSource) {
   }
   return shader;
 }
+
 
 GLuint createProgram(const char* pVertexSource, const char* pFragmentSource) {
   GLuint vertexShader = loadShader(GL_VERTEX_SHADER, pVertexSource);
@@ -132,8 +137,21 @@ GLuint createProgram(const char* pVertexSource, const char* pFragmentSource) {
   return program;
 }
 
+
 GLuint gProgram;
 GLuint gvPositionHandle;
+
+
+const GLfloat gTriangleVertices[] = {         1.0f,  1.0f,      1.0f, 0.0f, // top right
+                                              1.0f, -1.0f,     1.0f, 1.0f, // bottom right
+                                              -1.0f, -1.0f,      0.0f, 1.0f, // bottom left
+                                              -1.0f,  1.0f,      0.0f, 0.0f  // top left
+};
+unsigned int indices[] = {
+		0, 1, 3,
+		1, 2, 3
+};
+
 
 bool setupGraphics(int w, int h) {
   printGLString("Version", GL_VERSION);
@@ -153,55 +171,7 @@ bool setupGraphics(int w, int h) {
 
   glViewport(0, 0, w, h);
   checkGlError("glViewport");
-  return true;
-}
 
-const GLfloat gTriangleVertices[] = {         0.5f,  0.5f,      1.0f, 0.0f, // top right
-                                              0.5f, -0.5f,     1.0f, 1.0f, // bottom right
-                                              -0.5f, -0.5f,      0.0f, 1.0f, // bottom left
-                                              -0.5f,  0.5f,      0.0f, 0.0f  // top left
-};
-unsigned int indices[] = {
-        0, 1, 3,
-        1, 2, 3
-};
-void renderFrame() {
-
-  static float grey;
-  grey += 0.01f;
-  if (grey > 1.0f) {
-    grey = 0.0f;
-  }
-  glClearColor(grey, grey, grey, 1.0f);
-  checkGlError("glClearColor");
-  glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-  checkGlError("glClear");
-  unsigned int texture;
-  glGenTextures(1, &texture);
-  glBindTexture(GL_TEXTURE_2D, texture);
-  // 为当前绑定的纹理对象设置环绕、过滤方式
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-  glBindTexture(GL_TEXTURE_2D,0);
-
-  int width =1920;
-  int height = 1280;
-  cv::Mat map = cv::imread("/data/data/com.android.gl2jni/cache/car_image.png");
-  unsigned char *data = map.data;
-  if(data) {
-    glBindTexture(GL_TEXTURE_2D, texture);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-    glGenerateMipmap(GL_TEXTURE_2D);
-    glBindTexture(GL_TEXTURE_2D,0);
-  } else {
-    LOGE("Failed to load texture");
-  }
-
-
-  glUseProgram(gProgram);
-  checkGlError("glUseProgram");
 
   GLuint VBO, VAO, EBO; //顶点缓冲对象、顶点数组对象、元素缓冲对象
   glGenVertexArrays(1, &VAO);
@@ -222,7 +192,47 @@ void renderFrame() {
   glEnableVertexAttribArray(1);
   checkGlError("glVertexAttribPointer");
 
-  glBindVertexArray(VAO);
+  glGenTextures(1, &texture);
+  glBindTexture(GL_TEXTURE_2D, texture);
+  // 为当前绑定的纹理对象设置环绕、过滤方式
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+  glBindTexture(GL_TEXTURE_2D,0);
+
+  int width =1920;
+  int height = 1280;
+  cv::Mat map = cv::imread("/data/data/com.android.gl2jni/cache/car_image.png");
+  unsigned char *data = map.data;
+  if(data) {
+	  glBindTexture(GL_TEXTURE_2D, texture);
+	  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+	  glGenerateMipmap(GL_TEXTURE_2D);
+	  glBindTexture(GL_TEXTURE_2D,0);
+  } else {
+	  LOGE("Failed to load texture");
+	}
+  return true;
+}
+
+
+void renderFrame() {
+  static float grey;
+  grey = 1.0f;
+  if (grey > 1.0f) {
+    grey = 0.0f;
+  }
+
+  glClearColor(grey, grey, grey, 1.0f);
+  checkGlError("glClearColor");
+
+  glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+  checkGlError("glClear");
+
+  glUseProgram(gProgram);
+  checkGlError("glUseProgram");
+
   glBindTexture(GL_TEXTURE_2D, texture);
   glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
   checkGlError("glDrawArrays");
