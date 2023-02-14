@@ -46,27 +46,27 @@ static void checkGlError(const char* op) {
 }
 
 auto gVertexShader =
-    "#version 300 es\n"
-    "layout (location = 0) in vec3 aPos;\n"
-    "layout (location = 1) in vec2 aTexCoord;\n"
-    "out vec2 TexCoord;\n"
-    "void main()\n"
-    "{\n"
-    "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
-    "   TexCoord = vec2(aTexCoord.x, aTexCoord.y);\n"
-    "}\n";
+        "#version 300 es\n"
+        "layout (location = 0) in vec3 aPos;\n"
+        "layout (location = 1) in vec2 aTexCoord;\n"
+        "out vec2 TexCoord;\n"
+        "void main()\n"
+        "{\n"
+        "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
+        "   TexCoord = vec2(aTexCoord.x, aTexCoord.y);\n"
+        "}\n";
 
 
 auto gFragmentShader =
-    "#version 300 es\n"
-    "precision mediump float;\n"
-    "out vec4 FragColor;\n"
-    "in vec2 TexCoord;\n"
-    "uniform sampler2D ourTexture;\n" // 在OpenGL程序代码中设定这个变量
-    "void main()\n"
-    "{\n"
-    "   FragColor = texture(ourTexture, TexCoord);\n"
-    "}\n\0";
+        "#version 300 es\n"
+        "precision mediump float;\n"
+        "out vec4 FragColor;\n"
+        "in vec2 TexCoord;\n"
+        "uniform sampler2D ourTexture;\n" // 在OpenGL程序代码中设定这个变量
+        "void main()\n"
+        "{\n"
+        "   FragColor = texture(ourTexture, TexCoord);\n"
+        "}\n\0";
 
 
 GLuint loadShader(GLenum shaderType, const char* pSource) {
