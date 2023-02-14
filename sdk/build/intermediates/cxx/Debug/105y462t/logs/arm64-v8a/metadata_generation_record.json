@@ -1,0 +1,184 @@
+[
+  {
+    "level_": 0,
+    "message_": "Start JSON generation. Platform version: 21 min SDK version: arm64-v8a",
+    "file_": "/Users/tanyubo/Desktop/hello-gl2/sdk/libcxx_helper/CMakeLists.txt",
+    "tag_": "debug|arm64-v8a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 1022282834
+  },
+  {
+    "level_": 0,
+    "message_": "rebuilding JSON /Users/tanyubo/Desktop/hello-gl2/sdk/.cxx/Debug/105y462t/arm64-v8a/android_gradle_build.json due to:",
+    "file_": "/Users/tanyubo/Desktop/hello-gl2/sdk/libcxx_helper/CMakeLists.txt",
+    "tag_": "debug|arm64-v8a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 2057364989
+  },
+  {
+    "level_": 0,
+    "message_": "- expected json /Users/tanyubo/Desktop/hello-gl2/sdk/.cxx/Debug/105y462t/arm64-v8a/android_gradle_build.json file is not present, will remove stale json folder",
+    "file_": "/Users/tanyubo/Desktop/hello-gl2/sdk/libcxx_helper/CMakeLists.txt",
+    "tag_": "debug|arm64-v8a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 1779824107
+  },
+  {
+    "level_": 0,
+    "message_": "- missing previous command file /Users/tanyubo/Desktop/hello-gl2/sdk/.cxx/Debug/105y462t/arm64-v8a/metadata_generation_command.txt, will remove stale json folder",
+    "file_": "/Users/tanyubo/Desktop/hello-gl2/sdk/libcxx_helper/CMakeLists.txt",
+    "tag_": "debug|arm64-v8a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": -1102937239
+  },
+  {
+    "level_": 0,
+    "message_": "- command changed from previous, will remove stale json folder",
+    "file_": "/Users/tanyubo/Desktop/hello-gl2/sdk/libcxx_helper/CMakeLists.txt",
+    "tag_": "debug|arm64-v8a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 499262080
+  },
+  {
+    "level_": 0,
+    "message_": "removing stale contents from \u0027/Users/tanyubo/Desktop/hello-gl2/sdk/.cxx/Debug/105y462t/arm64-v8a\u0027",
+    "file_": "/Users/tanyubo/Desktop/hello-gl2/sdk/libcxx_helper/CMakeLists.txt",
+    "tag_": "debug|arm64-v8a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": -459566408
+  },
+  {
+    "level_": 0,
+    "message_": "created folder \u0027/Users/tanyubo/Desktop/hello-gl2/sdk/.cxx/Debug/105y462t/arm64-v8a\u0027",
+    "file_": "/Users/tanyubo/Desktop/hello-gl2/sdk/libcxx_helper/CMakeLists.txt",
+    "tag_": "debug|arm64-v8a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": -1823772628
+  },
+  {
+    "level_": 0,
+    "message_": "executing cmake /Users/tanyubo/Library/Android/sdk/cmake/3.18.1/bin/cmake \\\n  -H/Users/tanyubo/Desktop/hello-gl2/sdk/libcxx_helper \\\n  -DCMAKE_SYSTEM_NAME\u003dAndroid \\\n  -DCMAKE_EXPORT_COMPILE_COMMANDS\u003dON \\\n  -DCMAKE_SYSTEM_VERSION\u003d21 \\\n  -DANDROID_PLATFORM\u003dandroid-21 \\\n  -DANDROID_ABI\u003darm64-v8a \\\n  -DCMAKE_ANDROID_ARCH_ABI\u003darm64-v8a \\\n  -DANDROID_NDK\u003d/Users/tanyubo/Library/Android/sdk/ndk/23.1.7779620 \\\n  -DCMAKE_ANDROID_NDK\u003d/Users/tanyubo/Library/Android/sdk/ndk/23.1.7779620 \\\n  -DCMAKE_TOOLCHAIN_FILE\u003d/Users/tanyubo/Library/Android/sdk/ndk/23.1.7779620/build/cmake/android.toolchain.cmake \\\n  -DCMAKE_MAKE_PROGRAM\u003d/Users/tanyubo/Library/Android/sdk/cmake/3.18.1/bin/ninja \\\n  -DCMAKE_LIBRARY_OUTPUT_DIRECTORY\u003d/Users/tanyubo/Desktop/hello-gl2/sdk/build/intermediates/cxx/Debug/105y462t/obj/arm64-v8a \\\n  -DCMAKE_RUNTIME_OUTPUT_DIRECTORY\u003d/Users/tanyubo/Desktop/hello-gl2/sdk/build/intermediates/cxx/Debug/105y462t/obj/arm64-v8a \\\n  -DCMAKE_BUILD_TYPE\u003dDebug \\\n  -B/Users/tanyubo/Desktop/hello-gl2/sdk/.cxx/Debug/105y462t/arm64-v8a \\\n  -GNinja \\\n  -DANDROID_STL\u003dc++_shared\n",
+    "file_": "/Users/tanyubo/Desktop/hello-gl2/sdk/libcxx_helper/CMakeLists.txt",
+    "tag_": "debug|arm64-v8a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 1359027008
+  },
+  {
+    "level_": 0,
+    "message_": "/Users/tanyubo/Library/Android/sdk/cmake/3.18.1/bin/cmake \\\n  -H/Users/tanyubo/Desktop/hello-gl2/sdk/libcxx_helper \\\n  -DCMAKE_SYSTEM_NAME\u003dAndroid \\\n  -DCMAKE_EXPORT_COMPILE_COMMANDS\u003dON \\\n  -DCMAKE_SYSTEM_VERSION\u003d21 \\\n  -DANDROID_PLATFORM\u003dandroid-21 \\\n  -DANDROID_ABI\u003darm64-v8a \\\n  -DCMAKE_ANDROID_ARCH_ABI\u003darm64-v8a \\\n  -DANDROID_NDK\u003d/Users/tanyubo/Library/Android/sdk/ndk/23.1.7779620 \\\n  -DCMAKE_ANDROID_NDK\u003d/Users/tanyubo/Library/Android/sdk/ndk/23.1.7779620 \\\n  -DCMAKE_TOOLCHAIN_FILE\u003d/Users/tanyubo/Library/Android/sdk/ndk/23.1.7779620/build/cmake/android.toolchain.cmake \\\n  -DCMAKE_MAKE_PROGRAM\u003d/Users/tanyubo/Library/Android/sdk/cmake/3.18.1/bin/ninja \\\n  -DCMAKE_LIBRARY_OUTPUT_DIRECTORY\u003d/Users/tanyubo/Desktop/hello-gl2/sdk/build/intermediates/cxx/Debug/105y462t/obj/arm64-v8a \\\n  -DCMAKE_RUNTIME_OUTPUT_DIRECTORY\u003d/Users/tanyubo/Desktop/hello-gl2/sdk/build/intermediates/cxx/Debug/105y462t/obj/arm64-v8a \\\n  -DCMAKE_BUILD_TYPE\u003dDebug \\\n  -B/Users/tanyubo/Desktop/hello-gl2/sdk/.cxx/Debug/105y462t/arm64-v8a \\\n  -GNinja \\\n  -DANDROID_STL\u003dc++_shared\n",
+    "file_": "/Users/tanyubo/Desktop/hello-gl2/sdk/libcxx_helper/CMakeLists.txt",
+    "tag_": "debug|arm64-v8a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": -1804034689
+  },
+  {
+    "level_": 0,
+    "message_": "Exiting generation of /Users/tanyubo/Desktop/hello-gl2/sdk/.cxx/Debug/105y462t/arm64-v8a/compile_commands.json.bin normally",
+    "file_": "/Users/tanyubo/Desktop/hello-gl2/sdk/libcxx_helper/CMakeLists.txt",
+    "tag_": "debug|arm64-v8a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 592370385
+  },
+  {
+    "level_": 0,
+    "message_": "done executing cmake",
+    "file_": "/Users/tanyubo/Desktop/hello-gl2/sdk/libcxx_helper/CMakeLists.txt",
+    "tag_": "debug|arm64-v8a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 186915829
+  },
+  {
+    "level_": 0,
+    "message_": "write command file /Users/tanyubo/Desktop/hello-gl2/sdk/.cxx/Debug/105y462t/arm64-v8a/metadata_generation_command.txt",
+    "file_": "/Users/tanyubo/Desktop/hello-gl2/sdk/libcxx_helper/CMakeLists.txt",
+    "tag_": "debug|arm64-v8a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 316962119
+  },
+  {
+    "level_": 0,
+    "message_": "JSON generation completed without problems",
+    "file_": "/Users/tanyubo/Desktop/hello-gl2/sdk/libcxx_helper/CMakeLists.txt",
+    "tag_": "debug|arm64-v8a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 2124988913
+  }
+]

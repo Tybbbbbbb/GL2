@@ -1,0 +1,4 @@
+/Users/tanyubo/Library/Android/sdk/cmake/3.18.1/bin/ninja \
+  -C \
+  /Users/tanyubo/Desktop/hello-gl2/sdk/.cxx/Debug/105y462t/armeabi-v7a \
+  opencv_jni_shared

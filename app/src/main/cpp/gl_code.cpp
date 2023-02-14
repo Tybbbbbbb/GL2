@@ -15,8 +15,10 @@
  */
 
 // OpenGL ES 2.0 code
-#define STB_IMAGE_IMPLEMENTATION
-#include "stb_image.h"
+//#define STB_IMAGE_IMPLEMENTATION
+//#include "stb_image.h"
+#include <opencv2/core.hpp>
+#include <opencv2/highgui.hpp>
 #include <GLES3/gl32.h>
 #include <GLES2/gl2ext.h>
 #include <android/log.h>
@@ -154,21 +156,53 @@ bool setupGraphics(int w, int h) {
   return true;
 }
 
-const GLfloat gTriangleVertices[] = {         0.5f,  0.5f,      1.0f, 1.0f, // top right
-                                              0.5f, -0.5f,     1.0f, 0.0f, // bottom right
-                                              -0.5f, -0.5f,      0.0f, 0.0f, // bottom left
-                                              -0.5f,  0.5f,      0.0f, 1.0f  // top left
+const GLfloat gTriangleVertices[] = {         0.5f,  0.5f,      1.0f, 0.0f, // top right
+                                              0.5f, -0.5f,     1.0f, 1.0f, // bottom right
+                                              -0.5f, -0.5f,      0.0f, 1.0f, // bottom left
+                                              -0.5f,  0.5f,      0.0f, 0.0f  // top left
 };
 unsigned int indices[] = {
         0, 1, 3,
         1, 2, 3
 };
 void renderFrame() {
+
   static float grey;
   grey += 0.01f;
   if (grey > 1.0f) {
     grey = 0.0f;
   }
+  glClearColor(grey, grey, grey, 1.0f);
+  checkGlError("glClearColor");
+  glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+  checkGlError("glClear");
+  unsigned int texture;
+  glGenTextures(1, &texture);
+  glBindTexture(GL_TEXTURE_2D, texture);
+  // 为当前绑定的纹理对象设置环绕、过滤方式
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+  glBindTexture(GL_TEXTURE_2D,0);
+
+  int width =1920;
+  int height = 1280;
+  cv::Mat map = cv::imread("/data/data/com.android.gl2jni/cache/car_image.png");
+  unsigned char *data = map.data;
+  if(data) {
+    glBindTexture(GL_TEXTURE_2D, texture);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+    glGenerateMipmap(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D,0);
+  } else {
+    LOGE("Failed to load texture");
+  }
+
+
+  glUseProgram(gProgram);
+  checkGlError("glUseProgram");
+
   GLuint VBO, VAO, EBO; //顶点缓冲对象、顶点数组对象、元素缓冲对象
   glGenVertexArrays(1, &VAO);
   glGenBuffers(1, &VBO);
@@ -182,49 +216,15 @@ void renderFrame() {
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);//和VBO类似，我们会把这些函数调用放在绑定和解绑函数调用之间
   glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
   //解析顶点数据
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void * ) 0);
+  glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void * ) 0);
   glEnableVertexAttribArray(0);
-  glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void * ) (3 * sizeof(float)));
-  glEnableVertexAttribArray(2);
-
-  unsigned int texture;
-  glGenTextures(1, &texture);
-  glBindTexture(GL_TEXTURE_2D,texture);
-  // 为当前绑定的纹理对象设置环绕、过滤方式
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-  int width, height, nrChannels;
-  stbi_set_flip_vertically_on_load(true);
-  unsigned char *data = stbi_load(("/Users/tanyubo/Desktop/car_image.png"), &width, &height, &nrChannels, 0);
-  if (data)
-  {
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-    glGenerateMipmap(GL_TEXTURE_2D);
-  }
-  else
-  {
-    LOGE("Failed to load texture");
-  }
-  stbi_image_free(data);
-//  glBindTexture();
-  glClearColor(grey, grey, grey, 1.0f);
-  checkGlError("glClearColor");
-  glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-  checkGlError("glClear");
-
-  glUseProgram(gProgram);
-  checkGlError("glUseProgram");
-
-  glVertexAttribPointer(gvPositionHandle, 2, GL_FLOAT, GL_FALSE, 0,
-                        gTriangleVertices);
+  glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void * ) (2 * sizeof(float)));
+  glEnableVertexAttribArray(1);
   checkGlError("glVertexAttribPointer");
-  glEnableVertexAttribArray(gvPositionHandle);
-  checkGlError("glEnableVertexAttribArray");
-//  glDrawArrays(GL_TRIANGLES, 0, 3);
-  glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, indices);
+
+  glBindVertexArray(VAO);
+  glBindTexture(GL_TEXTURE_2D, texture);
+  glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
   checkGlError("glDrawArrays");
 }
 

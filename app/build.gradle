@@ -12,6 +12,7 @@ android {
         targetSdkVersion 33
         externalNativeBuild {
             cmake {
+                abiFilters  'arm64-v8a'
                 // Available arguments are inside ${SDK}/cmake/.../android.toolchain.cmake file
                 arguments '-DANDROID_STL=c++_static'
             }

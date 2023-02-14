@@ -1,6 +1,11 @@
 {
   "buildFiles": [
-    "/Users/tanyubo/Desktop/hello-gl2/app/src/main/cpp/CMakeLists.txt"
+    "/Users/tanyubo/Desktop/hello-gl2/app/src/main/cpp/CMakeLists.txt",
+    "/Users/tanyubo/Desktop/hello-gl2/app/src/main/cpp/include/OpenCV-android-sdk/sdk/native/jni/OpenCVConfig-version.cmake",
+    "/Users/tanyubo/Desktop/hello-gl2/app/src/main/cpp/include/OpenCV-android-sdk/sdk/native/jni/OpenCVConfig.cmake",
+    "/Users/tanyubo/Desktop/hello-gl2/app/src/main/cpp/include/OpenCV-android-sdk/sdk/native/jni/abi-arm64-v8a/OpenCVConfig.cmake",
+    "/Users/tanyubo/Desktop/hello-gl2/app/src/main/cpp/include/OpenCV-android-sdk/sdk/native/jni/abi-arm64-v8a/OpenCVModules-release.cmake",
+    "/Users/tanyubo/Desktop/hello-gl2/app/src/main/cpp/include/OpenCV-android-sdk/sdk/native/jni/abi-arm64-v8a/OpenCVModules.cmake"
   ],
   "cleanCommandsComponents": [
     [

@@ -1,6 +1,7 @@
 {
   "buildFiles": [
-    "/Users/tanyubo/Desktop/hello-gl2/app/src/main/cpp/CMakeLists.txt"
+    "/Users/tanyubo/Desktop/hello-gl2/app/src/main/cpp/CMakeLists.txt",
+    "/Users/tanyubo/Desktop/hello-gl2/app/src/main/cpp/include/OpenCV/sdk/native/jni/android.toolchain.cmake"
   ],
   "cleanCommandsComponents": [
     [

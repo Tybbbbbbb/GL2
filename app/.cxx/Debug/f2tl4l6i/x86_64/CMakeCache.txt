@@ -167,7 +167,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=Project
+CMAKE_PROJECT_NAME:STATIC=GL2
 
 //Ranlib
 CMAKE_RANLIB:FILEPATH=/Users/tanyubo/Library/Android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-ranlib
@@ -242,6 +242,12 @@ CMAKE_TOOLCHAIN_FILE:UNINITIALIZED=/Users/tanyubo/Library/Android/sdk/ndk/25.1.8
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//Value Computed by CMake
+GL2_BINARY_DIR:STATIC=/Users/tanyubo/Desktop/hello-gl2/app/.cxx/Debug/f2tl4l6i/x86_64
+
+//Value Computed by CMake
+GL2_SOURCE_DIR:STATIC=/Users/tanyubo/Desktop/hello-gl2/app/src/main/cpp
+
 //The directory containing a CMake configuration file for OpenCV.
 OpenCV_DIR:PATH=OpenCV_DIR-NOTFOUND
 
@@ -252,7 +258,7 @@ Project_BINARY_DIR:STATIC=/Users/tanyubo/Desktop/hello-gl2/app/.cxx/Debug/f2tl4l
 Project_SOURCE_DIR:STATIC=/Users/tanyubo/Desktop/hello-gl2/app/src/main/cpp
 
 //Dependencies for the target
-gl2jni_LIB_DEPENDS:STATIC=general;android;general;log;general;EGL;general;GLESv3;
+gl2jni_LIB_DEPENDS:STATIC=general;opencv_calib3d;general;opencv_core;general;opencv_dnn;general;opencv_features2d;general;opencv_flann;general;opencv_gapi;general;opencv_highgui;general;opencv_imgcodecs;general;opencv_imgproc;general;opencv_ml;general;opencv_objdetect;general;opencv_photo;general;opencv_stitching;general;opencv_video;general;opencv_videoio;general;log;general;EGL;general;GLESv3;
 
 
 ########################
@@ -394,4 +400,6 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding OpenCV
+FIND_PACKAGE_MESSAGE_DETAILS_OpenCV:INTERNAL=[/Users/tanyubo/Desktop/hello-gl2/app/src/main/cpp/include/OpenCV-android-sdk][v4.6.0()]
 

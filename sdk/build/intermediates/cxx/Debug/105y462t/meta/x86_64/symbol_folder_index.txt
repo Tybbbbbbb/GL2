@@ -1,0 +1,1 @@
+/Users/tanyubo/Desktop/hello-gl2/sdk/build/intermediates/cxx/Debug/105y462t/obj/x86_64
